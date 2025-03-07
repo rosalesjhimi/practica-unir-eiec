@@ -5,6 +5,7 @@ Organization: UNIR
 
 import os
 import sys
+import argparse
 
 DEFAULT_FILENAME = "words.txt"
 DEFAULT_DUPLICATES = False
@@ -22,15 +23,15 @@ def remove_duplicates_from_list(items):
 
 
 if __name__ == "__main__":
-    filename = DEFAULT_FILENAME
-    remove_duplicates = DEFAULT_DUPLICATES
-    if len(sys.argv) == 3:
-        filename = sys.argv[1]
-        remove_duplicates = sys.argv[2].lower() == "yes"
-    else:
-        print("The file must be specified as the first argument")
-        print("The second argument indicates whether duplicates should be removed")
-        sys.exit(1)
+    parser = argparse.ArgumentParser(description="Process some words.")
+    parser.add_argument("filename", type=str, help="The file to read words from")
+    parser.add_argument("remove_duplicates", type=str, choices=["yes", "no"], help="Whether to remove duplicates")
+    parser.add_argument("order", type=str, choices=["asc", "desc"], default="asc", help="The order of sorting: 'asc' for ascending, 'desc' for descending")
+    args = parser.parse_args()
+
+    filename = args.filename
+    remove_duplicates = args.remove_duplicates.lower() == "yes"
+    ascending_order = args.order == "asc"
 
     print(f"Words will be read from the file {filename}")
     file_path = os.path.join(".", filename)
@@ -46,4 +47,4 @@ if __name__ == "__main__":
     if remove_duplicates:
         word_list = remove_duplicates_from_list(word_list)
 
-    print(sort_list(word_list))
+    print(sort_list(word_list, ascending=ascending_order))
