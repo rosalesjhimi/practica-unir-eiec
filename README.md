@@ -21,6 +21,7 @@ python3 main.py <filename> <dup> <order>
 
 
 ---
+## Ejemplos de uso
 Usando el fichero creado palabras.txt
 
 Ejm:
