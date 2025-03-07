@@ -5,6 +5,7 @@ ROJO
 AZUL
 word1
 word2
+AZUL
 Superman
 Batman
 WonderWoman
@@ -22,5 +23,8 @@ GreenLantern
 BLANCO
 VERDE
 AMARILLO
+AZUL
 VIOLETA
 MAGENTA
+AZUL
+AZUL
